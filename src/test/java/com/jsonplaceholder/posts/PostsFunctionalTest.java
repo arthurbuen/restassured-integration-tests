@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
-import static com.jsonplaceholder.data.factory.PostsDataFactory.getInvalidPost;
-import static com.jsonplaceholder.data.factory.PostsDataFactory.getRandomPost;
+import static com.jsonplaceholder.data.factory.PostsDataFactory.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -22,7 +21,7 @@ public class PostsFunctionalTest extends BaseAPI {
 
     @Test
     @DisplayName("Should query a valid post")
-    void post() {
+    void getPost() {
 
         Posts post = getRandomPost();
 
@@ -39,12 +38,69 @@ public class PostsFunctionalTest extends BaseAPI {
 
     @Test
     @DisplayName("Should query a invalid post")
-    void postNotFound() {
+    void getNotFoundPost() {
 
         when()
             .get("/" + getInvalidPost())
         .then()
             .statusCode(HttpStatus.SC_NOT_FOUND)
             .body(equalTo("{}"));
+    }
+
+    @Test
+    @DisplayName("Should create a valid post")
+    void createPost() {
+
+        Posts post = createRandomPost();
+
+        Posts responsePost =
+                given()
+                        .contentType("application/json")
+                        .body(post)
+                        .when()
+                        .post()
+                        .then()
+                        .statusCode(HttpStatus.SC_CREATED)
+                        .extract()
+                        .body().as(Posts.class);
+
+        assertThat(responsePost, equalTo(post));
+    }
+
+    @Test
+    @DisplayName("Should edit a post")
+    void editPost() {
+
+        Posts post = getRandomPost();
+        post.setTitle("edit test");
+
+        Posts responsePost =
+                given()
+                        .contentType("application/json")
+                        .body(post)
+                        .when()
+                        .put("/" + post.getId())
+                        .then()
+                        .statusCode(HttpStatus.SC_OK)
+                        .extract()
+                        .body().as(Posts.class);
+
+        assertThat(responsePost, equalTo(post));
+    }
+
+    @Test
+    @DisplayName("Should delete a post")
+    void deletePost() {
+
+        Posts post = getRandomPost();
+
+        given()
+                        .contentType("application/json")
+                        .body(post)
+                        .when()
+                        .delete("/" + post.getId())
+                        .then()
+                        .statusCode(HttpStatus.SC_OK);
+
     }
 }

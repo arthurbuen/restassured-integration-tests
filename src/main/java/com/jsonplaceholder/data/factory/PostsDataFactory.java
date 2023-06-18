@@ -1,9 +1,9 @@
 package com.jsonplaceholder.data.factory;
 
 import com.jsonplaceholder.data.model.Posts;
-
 import java.util.List;
 import java.util.Random;
+import com.github.javafaker.Faker;
 
 public class PostsDataFactory {
 
@@ -27,5 +27,20 @@ public class PostsDataFactory {
     public static int getInvalidPost(){
         Random random = new Random();
         return random.nextInt(901) + 100;
+    }
+
+    public static Posts createRandomPost() {
+        Faker faker = new Faker();
+
+        Integer userId = faker.number().numberBetween(1, 100);
+        Integer id = getNextValidId();
+        String title = faker.lorem().sentence();
+        String body = faker.lorem().paragraph();
+
+        return new Posts(userId, id, title, body);
+    }
+
+    private static int getNextValidId(){
+        return 101; // todo: method to consume the /posts endpoint and get the last id + 1
     }
 }
