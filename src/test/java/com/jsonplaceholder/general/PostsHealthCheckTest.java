@@ -2,6 +2,7 @@ package com.jsonplaceholder.general;
 
 import com.jsonplaceholder.BaseAPI;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,7 @@ public class PostsHealthCheckTest extends BaseAPI {
     }
 
     @Test
+    @Disabled("Method not implemented")
     @DisplayName("Should be able to hit the health endpoint")
     void healthCheck() {
         when()
