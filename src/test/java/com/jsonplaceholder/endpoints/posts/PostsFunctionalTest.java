@@ -1,12 +1,15 @@
-package com.jsonplaceholder.posts;
+package com.jsonplaceholder.endpoints.posts;
 
 import com.jsonplaceholder.BaseAPI;
+import com.jsonplaceholder.config.ConfigurationManager;
 import com.jsonplaceholder.data.model.Posts;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
+import static com.jsonplaceholder.data.changeless.TestSuiteTags.FUNCTIONAL;
 import static com.jsonplaceholder.data.factory.PostsDataFactory.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,14 +19,15 @@ public class PostsFunctionalTest extends BaseAPI {
 
     @BeforeEach
     public void setup() {
-        basePath = "/posts";
+        basePath = ConfigurationManager.getConfiguration().endpointPosts();
     }
 
     @Test
+    @Tag(FUNCTIONAL)
     @DisplayName("Should query a valid post")
     void getPost() {
 
-        Posts post = getRandomPost();
+        Posts post = getValidPost();
 
         Posts responsePost =
         when()
@@ -37,6 +41,7 @@ public class PostsFunctionalTest extends BaseAPI {
     }
 
     @Test
+    @Tag(FUNCTIONAL)
     @DisplayName("Should query a invalid post")
     void getNotFoundPost() {
 
@@ -48,6 +53,7 @@ public class PostsFunctionalTest extends BaseAPI {
     }
 
     @Test
+    @Tag(FUNCTIONAL)
     @DisplayName("Should create a valid post")
     void createPost() {
 
@@ -68,10 +74,11 @@ public class PostsFunctionalTest extends BaseAPI {
     }
 
     @Test
+    @Tag(FUNCTIONAL)
     @DisplayName("Should edit a post")
     void editPost() {
 
-        Posts post = getRandomPost();
+        Posts post = getValidPost();
         post.setTitle("edit test");
 
         Posts responsePost =
@@ -89,10 +96,11 @@ public class PostsFunctionalTest extends BaseAPI {
     }
 
     @Test
+    @Tag(FUNCTIONAL)
     @DisplayName("Should delete a post")
     void deletePost() {
 
-        Posts post = getRandomPost();
+        Posts post = getValidPost();
 
         given()
                         .contentType("application/json")
