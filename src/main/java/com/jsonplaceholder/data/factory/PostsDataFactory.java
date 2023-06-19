@@ -7,7 +7,7 @@ import com.github.javafaker.Faker;
 
 public class PostsDataFactory {
 
-    private static final List<Posts> postData = List.of(
+    private static final List<Posts> postsData = List.of(
             new Posts(1, 1, "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
                     "quia et suscipit suscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"),
             new Posts(1, 2, "qui est esse",
@@ -18,10 +18,10 @@ public class PostsDataFactory {
                     "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit")
     );
 
-    public static Posts getRandomPost() {
+    public static Posts getValidPost() {
         Random random = new Random();
-        int randomIndex = random.nextInt(postData.size());
-        return postData.get(randomIndex);
+        int randomIndex = random.nextInt(postsData.size());
+        return postsData.get(randomIndex);
     }
 
     public static int getInvalidPost(){
