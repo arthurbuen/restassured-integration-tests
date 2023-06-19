@@ -1,16 +1,12 @@
 package com.jsonplaceholder.specs;
 
 import com.jsonplaceholder.data.model.Comments;
-import com.jsonplaceholder.data.model.Posts;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
-
-import static com.jsonplaceholder.data.factory.PostsDataFactory.createRandomPost;
-import static io.restassured.RestAssured.basePath;
 
 public class CommentsSpec {
 

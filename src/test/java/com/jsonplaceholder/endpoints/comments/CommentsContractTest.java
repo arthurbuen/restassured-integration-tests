@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.jsonplaceholder.data.changeless.TestSuiteTags.CONTRACT;
 import static com.jsonplaceholder.data.factory.CommentsDataFactory.createRandomComment;
-import static com.jsonplaceholder.data.factory.PostsDataFactory.getValidPost;
 import static io.restassured.RestAssured.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 

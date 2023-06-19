@@ -1,6 +1,5 @@
 package com.jsonplaceholder.e2e;
 
-import com.jsonplaceholder.BaseAPI;
 import com.jsonplaceholder.client.CommentsClient;
 import com.jsonplaceholder.client.PostsClient;
 import com.jsonplaceholder.data.model.Posts;
@@ -12,7 +11,6 @@ import com.github.javafaker.Faker;
 
 import static com.jsonplaceholder.data.changeless.TestSuiteTags.E2E;
 import static com.jsonplaceholder.data.factory.CommentsDataFactory.createNewComment;
-import static io.restassured.RestAssured.basePath;
 
 class SocialMediaE2ETest {
 

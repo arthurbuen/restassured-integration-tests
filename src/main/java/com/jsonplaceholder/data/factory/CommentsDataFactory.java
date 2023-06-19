@@ -1,16 +1,10 @@
 package com.jsonplaceholder.data.factory;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.jsonplaceholder.data.model.Comments;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-
 import static com.jsonplaceholder.file.FileUtils.getObjectsFromJsonFile;
 
 public class CommentsDataFactory {

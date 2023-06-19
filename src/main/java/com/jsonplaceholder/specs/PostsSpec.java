@@ -9,7 +9,6 @@ import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
 
 import static com.jsonplaceholder.data.factory.PostsDataFactory.createRandomPost;
-import static io.restassured.RestAssured.basePath;
 
 public class PostsSpec {
 
