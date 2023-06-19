@@ -101,3 +101,12 @@ It has a `schemas` folder with the JSON Schemas to enable Contract Testing using
 This project uses [GitHub Actions](https://github.com/features/actions) to run the all the tests in a pipeline.
 You can find it at https://github.com/arthurbuen/restassured-integration-tests/actions/workflows/ci.yml
 
+## Future Improvements
+
+* Increase test coverage for functional tests to cover additional status codes and possibilities.
+* Expand E2E test coverage for both positive and negative scenarios, addressing business rules, functional and non-functional requirements.
+* Separate the CI process in GitHub Actions into stages: Health Check > Contract Tests > Structure Tests > Functional Tests > E2E Tests.
+* Integration with a test management tool, such as Jira or Azure DevOps.
+* Integration with a reporting tool, such as Allre.
+* Configuration management: Add an environment for running tests (dev, uat, etc.) and refactor the current configuration management logic if needed to meet the requirements.
+* If possible, have the automation project in the same repository as the API being tested. This allows for testing at the component level in addition to integration tests, enabling deeper application testing by simulating scenarios such as database unavailability or interactions with third-party APIs.
