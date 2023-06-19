@@ -1,6 +1,6 @@
-![main](https://github.com/arthurbuen/restassured-integration-tests/actions/workflows/ci.yml/badge.svg)
-
 # Integration tests project
+
+[![main](https://github.com/arthurbuen/restassured-integration-tests/actions/workflows/ci.yml/badge.svg)](https://github.com/arthurbuen/restassured-integration-tests/actions)
 
 Integration testing project of the [API {JSON} PlaceHolder](https://jsonplaceholder.typicode.com/)  using RESTAssured as the framework and Java as the programming language.
 
